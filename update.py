@@ -63,21 +63,25 @@ def print_commit(commit):
 def print_repository(repo):
     print('Repo description: {}'.format(repo.description))
     print('Repo active branch is {}'.format(repo.active_branch))
+
+    rama = None
     for remote in repo.remotes:
         print('Remote named "{}" with URL "{}"'.format(remote, remote.url))
+        rama = remote
     print('Last commit for repo is {}.'.format(str(repo.head.commit.hexsha)))
 
-    rama = 
+    return rama
+    
 
 import os
 from git import Repo
 repo_path = os.getenv(url_folder)
 repo = Repo(repo_path)
 if not repo.bare:
-    print_repository(repo)
+    rama = print_repository(repo)
 
     # create list of commits then print some of them to stdout
-    commits = list(repo.iter_commits('master'))[:COMMITS_TO_PRINT]
+    commits = list(repo.iter_commits(rama))[:COMMITS_TO_PRINT]
     for commit in commits:
         print_commit(commit)
         pass
