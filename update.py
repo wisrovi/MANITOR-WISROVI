@@ -48,6 +48,7 @@ print(auto_update.check_new_version())
 
 url_folder = "https://github.com/" + PROJECT
 
+COMMITS_TO_PRINT = 5
 
 def print_commit(commit):
     print('----')
