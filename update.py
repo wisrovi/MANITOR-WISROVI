@@ -2,7 +2,7 @@ import sys
 from pyautoupdate.launcher import Launcher
 
 # Run code and return with exit code of launched code
-launch=Launcher("code_1.py","https://update-url")
+launch=Launcher("update.py","https://github.com/wisrovi/MANITOR-WISROVI")
 
 # Check for update before running
 need_update = launch.check_new()
