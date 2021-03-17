@@ -126,3 +126,4 @@ dmypy.json
 resources/original.zip
 *.xml
 .idea/workspace.xml
+*.xml

@@ -224,10 +224,5 @@ def main():
             break
 
 
-@Autoupdate(name="Autoupdate WISROVI", project=PROJECT, root_path=path.dirname(path.realpath(__file__)))
-def root():
-    main()
-
-
 if __name__ == "__main__":
-    root()
+    main()
