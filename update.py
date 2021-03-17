@@ -1,9 +1,9 @@
-PROJECT = "wisrovi/MANITOR-WISROVI"
-
 class Version:
     centena = int()
     decena = int()
     unidad = int()
+
+
 class AutoUpdate:
     import requests
     import os
@@ -13,30 +13,38 @@ class AutoUpdate:
     import shutil
 
     RAMA_TRABAJO = "main"
+    NOT_ERASE_FILES = ['.git', '.gitattributes', '.gitignore', '.idea', 'info_version.txt', 'update.py', 'env']
 
     def __init__(self, project):
         self.project = project
 
     def read_version_web(self):
         url_version = "https://raw.githubusercontent.com/" + self.project + "/main/version.txt"
-        r = self.requests.get(url = url_version, params = {})
+        r = self.requests.get(url=url_version, params={})
         data = r.content.decode("utf-8").replace("\n", "")
-        data = [int(d) for d in data.split(".") ]
+        data = [int(d) for d in data.split(".")]
         self.web_version = Version()
         self.web_version.unidad = data[2]
         self.web_version.decena = data[1]
         self.web_version.centena = data[0]
-        print("Nueva version: ", data)
+        # print("Nueva version: ", data)
 
     def read_version_local(self):
-        with open('version.txt', 'r') as reader:
-            data = reader.read().replace("\n", "")
-            data = [int(d) for d in data.split(".") ]
+        exist_file = False
+        try:
+            with open('version.txt', 'r') as reader:
+                data = reader.read().replace("\n", "")
+                data = [int(d) for d in data.split(".")]
+                self.local_version = Version()
+                self.local_version.unidad = data[2]
+                self.local_version.decena = data[1]
+                self.local_version.centena = data[0]
+                # print("Version actual: ", data)
+                exist_file = True
+        except:
+            pass
+        if not exist_file:
             self.local_version = Version()
-            self.local_version.unidad = data[2]
-            self.local_version.decena = data[1]
-            self.local_version.centena = data[0]
-            print("Version actual: ", data)
 
     def check_new_version(self):
         self.read_version_local()
@@ -51,9 +59,10 @@ class AutoUpdate:
             there_is_new_version = True
 
         if there_is_new_version:
-            print("Hay una nueva versión para descargar...")
             self.get_data_last_update()
             self.download_update()
+        else:
+            print("OS update, not need update!")
         return there_is_new_version
 
     def get_data_last_update(self):
@@ -79,6 +88,7 @@ class AutoUpdate:
             print('Could not load repository at {} :('.format(self.project))
 
     def download_update(self):
+        print("Downloading update...")
         BASE_DIR = self.path.dirname(self.path.realpath(__file__))
         url_folder = "https://github.com/" + self.project + ".git"
 
@@ -88,30 +98,50 @@ class AutoUpdate:
             self.Repo.clone_from(url_folder, BASE_DIR + "/" + Folder)
 
         contenidos = self.os.listdir(BASE_DIR)
+        contenidos = [cont if not cont in self.NOT_ERASE_FILES else 'null' for cont in contenidos]
+        contenidos = list(set(contenidos))
+        contenidos.remove('null')
+
         for elemento in contenidos:
-            if self.os.path.isfile(elemento):
-                if not elemento.__eq__("update.py"):
-                    if not elemento.find(".git")>=0:
-                        if not elemento.__eq__("version.txt"):
-                            self.os.remove(elemento)
+            if elemento != Folder:
+                self.os.remove(elemento)
 
         contenidos = self.os.listdir(Folder)
+        contenidos = [cont if not cont in self.NOT_ERASE_FILES else 'null' for cont in contenidos]
+        contenidos = list(set(contenidos))
+        contenidos.remove('null')
+
         for elemento in contenidos:
-            if not elemento.find(".git")>=0:
-                self.shutil.copy(elemento, BASE_DIR)
+            origen = BASE_DIR + "/" + Folder + "/" + elemento
+            destino = BASE_DIR + "/" + elemento
+            self.shutil.copy(origen, destino)
 
         self.shutil.rmtree(Folder)
         print("update completed!")
 
 
-if __name__=="__main__":
-    AutoUpdate(PROJECT).check_new_version()
-    print("queso")
+class Autoupdate(object):
+    def __init__(self, name, project):
+        self.name = name
+        self.project = project
+
+    def __call__(self, f):
+        def none(*args, **kw_args):
+            print(self.name)
+            AutoUpdate(self.project).check_new_version()
+            rta = f(*args, **kw_args)
+            return rta
+
+        return none
 
 
+PROJECT = "wisrovi/MANITOR-WISROVI"
 
 
+@Autoupdate(name="Autoupdate WISROVI", project=PROJECT)
+def main_demo_autoupdate():
+    print("update library")
 
 
-
-
+if __name__ == "__main__":
+    main_demo_autoupdate()
