@@ -4,7 +4,7 @@ class Version:
     unidad = int()
 
 
-class AutoUpdate:
+class AutoUpdate_project:
     import requests
     import os
     from git import Repo
@@ -13,10 +13,14 @@ class AutoUpdate:
     import shutil
 
     RAMA_TRABAJO = "main"
-    NOT_ERASE_FILES = ['.git', '.gitattributes', '.gitignore', '.idea', 'info_version.txt', 'update.py', 'env']
+    NOT_ERASE_FILES = ['.git', '.gitattributes', '.gitignore', '.idea', 'info_version.txt', 'autoupdate.py', 'env', '__init__.py']
 
-    def __init__(self, project):
+    def __init__(self, project, root_path=None):
         self.project = project
+        if root_path is not None:
+            self.root_path = root_path
+        else:
+            self.root_path = None
 
     def read_version_web(self):
         url_version = "https://raw.githubusercontent.com/" + self.project + "/main/version.txt"
@@ -89,12 +93,15 @@ class AutoUpdate:
 
     def download_update(self):
         print("Downloading update...")
-        BASE_DIR = self.path.dirname(self.path.realpath(__file__))
+        if self.root_path is not None:
+            BASE_DIR = self.root_path
+        else:
+            BASE_DIR = self.path.dirname(self.path.realpath(__file__))
         url_folder = "https://github.com/" + self.project + ".git"
 
         Folder = "temp"
-        if not self.os.path.isdir(Folder):
-            self.os.mkdir(Folder)
+        if not self.os.path.isdir(BASE_DIR + "/" + Folder):
+            self.os.mkdir(BASE_DIR + "/" + Folder)
             self.Repo.clone_from(url_folder, BASE_DIR + "/" + Folder)
 
         contenidos = self.os.listdir(BASE_DIR)
@@ -104,7 +111,10 @@ class AutoUpdate:
 
         for elemento in contenidos:
             if elemento != Folder:
-                self.os.remove(elemento)
+                if self.os.path.isdir(BASE_DIR + "/" + elemento):
+                    self.shutil.rmtree(elemento)
+                else:
+                    self.os.remove(elemento)
 
         contenidos = self.os.listdir(Folder)
         contenidos = [cont if not cont in self.NOT_ERASE_FILES else 'null' for cont in contenidos]
@@ -137,14 +147,15 @@ class AutoUpdate:
 
 
 class Autoupdate(object):
-    def __init__(self, name, project):
+    def __init__(self, name, project, root_path):
         self.name = name
         self.project = project
+        self.root_path = root_path
 
     def __call__(self, f):
         def none(*args, **kw_args):
             print(self.name)
-            AutoUpdate(self.project).check_new_version()
+            AutoUpdate_project(self.project, self.root_path).check_new_version()
             rta = f(*args, **kw_args)
             return rta
 
@@ -154,10 +165,11 @@ class Autoupdate(object):
 PROJECT = "wisrovi/MANITOR-WISROVI"
 
 
-@Autoupdate(name="Autoupdate WISROVI", project=PROJECT)
-def main_demo_autoupdate():
-    print("update library")
+# @Autoupdate(name="Autoupdate WISROVI", project=PROJECT)
+# def main_demo_autoupdate():
+#     print("update library")
 
 
 if __name__ == "__main__":
-    main_demo_autoupdate()
+    #main_demo_autoupdate()
+    pass

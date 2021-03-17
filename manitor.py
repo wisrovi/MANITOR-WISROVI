@@ -1,6 +1,7 @@
 import time
 
 import cv2
+import os.path as path
 
 from Config.beacon import TIME_SCAN_BEACON, MINIMA_DISTANCIA_RSSI
 from Config.github import PROJECT
@@ -14,7 +15,7 @@ from Util.util_manitor import EnviarNotificacionLavadoManosCompleto, MatricularF
     IniciarEscuchaMQTT
 from Util.util_show_videos import Avatar_video
 from Util.util_sound import iniciar_sounds, reproducir
-from library.update import Autoupdate
+from library.autoupdate import Autoupdate
 
 chrono_beacon_scan = currentTime()
 PRIMER_CARDHOLDER = False
@@ -165,7 +166,7 @@ class Sound(object):
 # Fin decoradores
 
 
-@Autoupdate(name="Autoupdate WISROVI", project=PROJECT)
+@Autoupdate(name="Autoupdate WISROVI", project=PROJECT, root_path=path.dirname(path.realpath(__file__)))
 @Sound("sound manitor")
 @Manitor("Manitor WISROVI")
 @Cardholder("cardholder manitor")
