@@ -111,7 +111,7 @@ class Avatar_video:
 
         self.instruccion_actual += 1
 
-        return self.path_video_actual
+        return self.path_video_actual, self.instruccion_actual
 
     def cerrar_avatar(self):
         try:

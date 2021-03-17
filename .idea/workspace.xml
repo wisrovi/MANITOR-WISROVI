@@ -2,107 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fb61a1b-195c-46eb-8557-c52d9295e431" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Config/github.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/Constantes/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/Constantes/pantallas.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/Constantes/skin_color.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/Constantes/topic_subscribirse_mqtt.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/avatar.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/beacon.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/broker_mqtt.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/movimiento_frente_camara.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/videos_manitor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Create_voices.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Doc/Bibliografia" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SIMULADOR/BALIZA_SIMULADA.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SIMULADOR/MANITOR_SIMULADO.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SIMULADOR/SERVER.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SIMULADOR/config/BALIZAs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SIMULADOR/config/BROKER_CONECTION.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SIMULADOR/config/CARHOLDERs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SIMULADOR/config/MANITORs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SIMULADOR/config/general.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Util/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Util/areas.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Util/beacon.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Util/functions_image.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Util/mqtt.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Util/util.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Util/util_deteccion_movimiento.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Util/util_manitor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Util/util_show_videos.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Util/util_sound.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/info_version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/info_version.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/update.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manitor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/old/Untitled.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/old/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/old/main_old.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/0_bienvenida.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/10_enjuagarSecar.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/1_mojarse_manos.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/2_aplique_jabon.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/3_palma_con_palma.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/4_entre_dedos.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/5_detras_manos.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/6_pulgares.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/7_detras_dedos.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/8_unas.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/9_munecas.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/avatar_basico.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/avatar_basico2.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/avatar_final.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/avatar_saludo.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lavadoManos.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p0.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p0.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p1.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p10.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p10.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p2.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p3.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p3.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p4.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p4.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p5.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p5.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p6.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p6.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p7.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p7.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p8.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p8.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p9.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/p9.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/BuscarCorrectosColoresHSV.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/autoupdate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/beacon_scaner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/decorador.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/deteccion_movimiento.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/font/MS_Mincho.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/hilos.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mac.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mqtt_test_fcv.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/receptor_mqtt.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/show_videos.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test4.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/update.py" beforeDir="false" afterPath="$PROJECT_DIR$/update.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/version.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/videos_manitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Config/videos_manitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Util/util_deteccion_movimiento.py" beforeDir="false" afterPath="$PROJECT_DIR$/Util/util_deteccion_movimiento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Util/util_show_videos.py" beforeDir="false" afterPath="$PROJECT_DIR$/Util/util_show_videos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/update.py" beforeDir="false" afterPath="$PROJECT_DIR$/library/update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/manitor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -123,7 +41,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/update.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.manitor">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="MANITOR-WISROVI" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -138,6 +56,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/update.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="manitor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MANITOR-WISROVI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../../MANITOR/MANITOR-WISROVI/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manitor.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -170,6 +110,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.manitor" />
         <item itemvalue="Python.update" />
       </list>
     </recent_temporary>
@@ -183,7 +124,7 @@
       <option name="presentableId" value="Default" />
       <updated>1615946768271</updated>
       <workItem from="1615946783466" duration="881000" />
-      <workItem from="1615993007421" duration="6033000" />
+      <workItem from="1615993007421" duration="8319000" />
     </task>
     <servers />
   </component>
@@ -206,6 +147,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Util/util_deteccion_movimiento.py</url>
+          <line>88</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -216,6 +164,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MANITOR_WISROVI$update.coverage" NAME="update Coverage Results" MODIFIED="1616000960334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MANITOR_WISROVI$manitor.coverage" NAME="manitor Coverage Results" MODIFIED="1616011596713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MANITOR_WISROVI$update.coverage" NAME="update Coverage Results" MODIFIED="1616001134382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

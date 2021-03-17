@@ -22,6 +22,7 @@ class Deteccion_movimiento:
     def __init__(self, cam, clase):
         self.elegir_camara(cam)
         self.instanciar_clase(clase)
+        self.tiempo = self.TIEMPO_POR_INSTRUCCION
 
     def instanciar_clase(self, f):
         from Util.util import currentTime
@@ -54,6 +55,9 @@ class Deteccion_movimiento:
     def cerrar_camara(self):
         self.cap.release()
 
+    def set_time(self, time_new):
+        self.tiempo = time_new
+
     def proceso_completo(self):
         from Util.util import currentTime
         frame, _, _, masking = self.FrameSinRuido(self.cap)
@@ -82,7 +86,7 @@ class Deteccion_movimiento:
                         self.chrono_siguiente_instruccion = currentTime()
 
                 if self.status == self.STATUS_MOVIMIENTO[0]:
-                    if abs(self.chrono_siguiente_instruccion - currentTime()) >= self.TIEMPO_POR_INSTRUCCION:
+                    if abs(self.chrono_siguiente_instruccion - currentTime()) >= self.tiempo:
                         self.chrono_siguiente_instruccion = currentTime()
                         self.activar_siguiente_video()
             else:

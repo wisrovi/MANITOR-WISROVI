@@ -3,6 +3,7 @@ import time
 import cv2
 
 from Config.beacon import TIME_SCAN_BEACON, MINIMA_DISTANCIA_RSSI
+from Config.github import PROJECT
 from Config.movimiento_frente_camara import TIEMPO_VOLVER_LAVAR_MANOS
 from Config.videos_manitor import PATH_VIDEOS, INSTRUCCIONES
 from Util.beacon import Process_Scan, start_scan_beacon, stop_scan_beacon
@@ -13,7 +14,7 @@ from Util.util_manitor import EnviarNotificacionLavadoManosCompleto, MatricularF
     IniciarEscuchaMQTT
 from Util.util_show_videos import Avatar_video
 from Util.util_sound import iniciar_sounds, reproducir
-
+from library.update import Autoupdate
 
 chrono_beacon_scan = currentTime()
 PRIMER_CARDHOLDER = False
@@ -75,6 +76,7 @@ class Proceso_deteccion_movimiento:
         else:
             reproducir(avatar_class.instruccion_actual)
             avatar_class.continuar_siguiente_paso_instruccion()
+            dm.set_time(INSTRUCCIONES[avatar_class.instruccion_actual]['time'])
 
         self.tiempo_transcurrido_por_instruccion = time.time()
 
@@ -163,6 +165,7 @@ class Sound(object):
 # Fin decoradores
 
 
+@Autoupdate(name="Autoupdate WISROVI", project=PROJECT)
 @Sound("sound manitor")
 @Manitor("Manitor WISROVI")
 @Cardholder("cardholder manitor")
