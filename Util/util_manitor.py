@@ -1,4 +1,3 @@
-
 from Util.mqtt import EnviarDatoServidor, MatricularFuncionRecibidoMQTT, IniciarEscuchaMQTT
 from Util.util import Get_MAC, Leer_HoraActual
 
@@ -11,4 +10,3 @@ def EnviarNotificacionLavadoManosCompleto(uuid):
 
     EnviarDatoServidor(topic, msg)
     print("Enviando notificacion al servidor (MQTT) usuario se lavo correctamente las manos, uuid:", uuid)
-

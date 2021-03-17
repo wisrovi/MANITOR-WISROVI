@@ -1,10 +1,8 @@
-
 class Avatar_video:
     import numpy as np
     import cv2
     from Config.avatar import AVATAR
     from Config.videos_manitor import INSTRUCCIONES, LIENZO_MOSTRAR_VIDEOS
-
 
     instruccion_actual = 0
     avatar_inicio = True
@@ -56,7 +54,8 @@ class Avatar_video:
             if self.avatar_inicio:
                 self.avatar_inicio, self.frame_avatar = self.avatar.read()
                 if self.avatar_inicio:
-                    self.frame_avatar = self.cv2.resize(self.frame_avatar, (self.LIENZO_MOSTRAR_VIDEOS[1], self.LIENZO_MOSTRAR_VIDEOS[0]))
+                    self.frame_avatar = self.cv2.resize(self.frame_avatar,
+                                                        (self.LIENZO_MOSTRAR_VIDEOS[1], self.LIENZO_MOSTRAR_VIDEOS[0]))
                     self.black_screen = self.frame_avatar
                 else:
                     self.avatar = self.cv2.VideoCapture(self.PATH_VIDEOS + "/" + self.AVATAR['BAS1'])
@@ -77,18 +76,22 @@ class Avatar_video:
                                 (self.black_screen.shape[0] - self.frame.shape[0]) / 2)
                             origen_y = int((self.black_screen.shape[1] - self.frame.shape[1]) / 2)
 
-                            self.black_screen[origen_x:self.frame.shape[0] + origen_x, origen_y:self.frame.shape[1] + origen_y] = self.frame
+                            self.black_screen[origen_x:self.frame.shape[0] + origen_x,
+                            origen_y:self.frame.shape[1] + origen_y] = self.frame
                 else:
                     if not isinstance(self.avatar, str):
                         self.hay_avatar, self.frame_avatar = self.avatar.read()
 
                     if self.hay_avatar:
-                        self.frame_avatar = self.cv2.resize(self.frame_avatar, (self.LIENZO_MOSTRAR_VIDEOS[1], self.LIENZO_MOSTRAR_VIDEOS[0]))
+                        self.frame_avatar = self.cv2.resize(self.frame_avatar, (
+                        self.LIENZO_MOSTRAR_VIDEOS[1], self.LIENZO_MOSTRAR_VIDEOS[0]))
                         self.black_screen = self.frame_avatar
                     else:
                         self.multiplexor_avatar = False if self.multiplexor_avatar else True
                         self.avatar = self.cv2.VideoCapture \
-                            (self.PATH_VIDEOS + "/" + self.AVATAR['BAS1']) if self.multiplexor_avatar else self.cv2.VideoCapture( self.PATH_VIDEOS + "/" + self.AVATAR['BAS2'])
+                            (self.PATH_VIDEOS + "/" + self.AVATAR[
+                                'BAS1']) if self.multiplexor_avatar else self.cv2.VideoCapture(
+                            self.PATH_VIDEOS + "/" + self.AVATAR['BAS2'])
         else:
             self.avatar_inicio = None
         return self.black_screen, self.avatar_inicio
@@ -128,8 +131,3 @@ class Avatar_video:
 
     def iniciar_avatar(self):
         self.sistema_iniciado = True
-
-
-
-
-

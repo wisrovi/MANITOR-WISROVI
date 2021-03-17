@@ -1,6 +1,3 @@
-
-
-
 class Deteccion_movimiento:
     import cv2
 
@@ -38,13 +35,11 @@ class Deteccion_movimiento:
 
         self.dm.iniciar_proceso()
 
-
     def terminar_proceso_deteccion_movimiento(self):
         self.PROCESS_DETECT_MOVE = False
         self.primer_movimiento_secuencia = False
         self.status = self.STATUS_MOVIMIENTO[1]
         self.contador_cambio_estado = 0
-
 
     def activar_siguiente_video(self):
         self.dm.mostrar_siguiente_video()
@@ -69,7 +64,6 @@ class Deteccion_movimiento:
             else:
                 self.cv2.circle(frame, (50, 50), 20, (255, 0, 255), -1)
 
-
             if hay_movimiento_segun_cambio_areas:
                 if not self.primer_movimiento_secuencia:
                     self.primer_movimiento_secuencia = True
@@ -81,7 +75,7 @@ class Deteccion_movimiento:
                 else:
                     # si antes no habia movimiento y ahora si lo hay se valida que no se falso positivo al monitorear que el movimiento sea continuo frente a la camara
                     self.contador_cambio_estado += 1
-                    if self.contador_cambio_estado > self.valor_cambio/2:
+                    if self.contador_cambio_estado > self.valor_cambio / 2:
                         self.status = self.STATUS_MOVIMIENTO[0]
                         self.chrono_siguiente_instruccion = currentTime()
 
@@ -111,10 +105,12 @@ class Deteccion_movimiento:
 
         return frame
 
+
 if __name__ == "__main__":
     import cv2
     import time
     from Util.util import currentTime
+
 
     class Proceso_deteccion_movimiento:
         def iniciar_proceso(self):

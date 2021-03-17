@@ -1,5 +1,3 @@
-
-
 import numpy as np
 import cv2
 from Config.Constantes.skin_color import franja_colores
@@ -7,9 +5,10 @@ from Config.videos_manitor import LIENZO_MOSTRAR_VIDEOS
 
 
 def LeerFotograma(cap):
-    _, frame = cap.read() 
+    _, frame = cap.read()
     # cv2.imshow("Original Image", frame)
     return frame
+
 
 def CrearMascara(frame):
     masking, punto_elegido = None, None
@@ -22,24 +21,23 @@ def CrearMascara(frame):
 
         # eliminamos el ruido
         if False:
-            kernel = np.ones((10,10),np.uint8) 
-            masking = cv2.morphologyEx(masking,cv2.MORPH_OPEN,kernel)
-            masking = cv2.morphologyEx(masking,cv2.MORPH_CLOSE,kernel)
+            kernel = np.ones((10, 10), np.uint8)
+            masking = cv2.morphologyEx(masking, cv2.MORPH_OPEN, kernel)
+            masking = cv2.morphologyEx(masking, cv2.MORPH_CLOSE, kernel)
 
         # Detectamos contornos, nos quedamos con el mayor y calculamos su centro
         punto_elegido = 0
         if False:
             contours, hierarchy = cv2.findContours(masking, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-            mayor_contorno = max(contours, key = cv2.contourArea)
+            mayor_contorno = max(contours, key=cv2.contourArea)
             momentos = cv2.moments(mayor_contorno)
-            cx = float(momentos['m10']/momentos['m00'])
-            cy = float(momentos['m01']/momentos['m00'])
-            punto_elegido = np.array([[[cx,cy]]],np.float32)
-
-        
+            cx = float(momentos['m10'] / momentos['m00'])
+            cy = float(momentos['m01'] / momentos['m00'])
+            punto_elegido = np.array([[[cx, cy]]], np.float32)
 
         # cv2.imshow("Deteccion Color", masking)
     return masking, punto_elegido
+
 
 def QuitarPartesNoMarcadasEnMascara(frame, masking):
     # Creo una nueva imagen tomando la imagen original y dejando solo las partes blancas de la mascara
@@ -65,8 +63,9 @@ def CalcularNuevaDimension(actual, marco=0.8):
 
     return 1
 
+
 def CrearFondoPonerVideos():
     black_screen = np.zeros([LIENZO_MOSTRAR_VIDEOS[0], LIENZO_MOSTRAR_VIDEOS[1], 3],
                             dtype=np.uint8)  ## fondo donde poner el video
 
-    return  black_screen
+    return black_screen

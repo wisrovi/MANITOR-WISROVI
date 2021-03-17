@@ -1,4 +1,3 @@
-
 from beacontools import BeaconScanner, IBeaconAdvertisement
 from Util.util import diff, vector_vacio
 from Config.beacon import FCV
@@ -26,10 +25,10 @@ class Beacon_Obj(object):
         return self.__dict__
 
 
-BEACONs_SCANNED = dict() # Guardo todos los beacon escaneados durante el periodo de escaneo
-HISTORY_BEACON_SCAN = dict() # Guardo todo el historial de los beacons escaneados desde el encendido del dispositivo
-HISTORY_MORE_NEAR_BEACON = ["" for _ in range(size_vector)] # Guardo un historico de todos los uuid mas cercanos en cada periodo de escaneo
-
+BEACONs_SCANNED = dict()  # Guardo todos los beacon escaneados durante el periodo de escaneo
+HISTORY_BEACON_SCAN = dict()  # Guardo todo el historial de los beacons escaneados desde el encendido del dispositivo
+HISTORY_MORE_NEAR_BEACON = ["" for _ in range(
+    size_vector)]  # Guardo un historico de todos los uuid mas cercanos en cada periodo de escaneo
 
 
 def Process_Scan():
@@ -58,7 +57,7 @@ def Process_Scan():
 
     for i in range(size_vector - 1, 0, -1):
         HISTORY_MORE_NEAR_BEACON[i] = HISTORY_MORE_NEAR_BEACON[i - 1]
-    HISTORY_MORE_NEAR_BEACON[0] = mas_cercano['uuid'] if len(mas_cercano)>1 else ""
+    HISTORY_MORE_NEAR_BEACON[0] = mas_cercano['uuid'] if len(mas_cercano) > 1 else ""
 
     uuid_beacons_this_scan = [uuid for uuid in BEACONs_SCANNED]
     all_uuid_beacons_scan = [uuid for uuid in HISTORY_BEACON_SCAN]
@@ -76,9 +75,6 @@ def Process_Scan():
         else:
             return False, HISTORY_MORE_NEAR_BEACON[0], mas_cercano['rssi']
     return False, "", 0
-
-
-
 
 
 def callback(bt_addr, rssi, packet, additional_info):
