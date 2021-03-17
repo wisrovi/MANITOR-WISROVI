@@ -114,10 +114,26 @@ class AutoUpdate:
         for elemento in contenidos:
             origen = BASE_DIR + "/" + Folder + "/" + elemento
             destino = BASE_DIR + "/" + elemento
-            self.shutil.copy(origen, destino)
+            # print(elemento, self.os.path.isfile(origen), self.os.path.isdir(origen))
+            if self.os.path.isdir(origen):
+                self.copytree(origen, destino)
+            else:
+                self.shutil.copy(origen, destino)
 
         self.shutil.rmtree(Folder)
         print("update completed!")
+
+    def copytree(self, src, dst, symlinks=False, ignore=None):
+        if not self.os.path.exists(dst):
+            self.os.makedirs(dst)
+        for item in self.os.listdir(src):
+            s = self.os.path.join(src, item)
+            d = self.os.path.join(dst, item)
+            if self.os.path.isdir(s):
+                self.shutil.copytree(s, d, symlinks, ignore)
+            else:
+                if not self.os.path.exists(d) or self.os.stat(s).st_mtime - self.os.stat(d).st_mtime > 1:
+                    self.shutil.copy2(s, d)
 
 
 class Autoupdate(object):
