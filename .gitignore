@@ -125,3 +125,4 @@ dmypy.json
 .pyre/
 resources/original.zip
 *.xml
+.idea/workspace.xml

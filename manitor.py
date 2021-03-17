@@ -166,7 +166,6 @@ class Sound(object):
 # Fin decoradores
 
 
-@Autoupdate(name="Autoupdate WISROVI", project=PROJECT, root_path=path.dirname(path.realpath(__file__)))
 @Sound("sound manitor")
 @Manitor("Manitor WISROVI")
 @Cardholder("cardholder manitor")
@@ -225,5 +224,10 @@ def main():
             break
 
 
-if __name__ == "__main__":
+@Autoupdate(name="Autoupdate WISROVI", project=PROJECT, root_path=path.dirname(path.realpath(__file__)))
+def root():
     main()
+
+
+if __name__ == "__main__":
+    root()
