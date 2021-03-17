@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fb61a1b-195c-46eb-8557-c52d9295e431" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Config/github.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/videos_manitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Config/videos_manitor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Util/util_deteccion_movimiento.py" beforeDir="false" afterPath="$PROJECT_DIR$/Util/util_deteccion_movimiento.py" afterDir="false" />
@@ -124,7 +123,7 @@
       <option name="presentableId" value="Default" />
       <updated>1615946768271</updated>
       <workItem from="1615946783466" duration="881000" />
-      <workItem from="1615993007421" duration="8319000" />
+      <workItem from="1615993007421" duration="8435000" />
     </task>
     <servers />
   </component>
