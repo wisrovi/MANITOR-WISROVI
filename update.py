@@ -6,27 +6,37 @@ class Version:
     unidad = int()
 class AutoUpdate:
     import requests
+    import os
+    from git import Repo
+    import json
+    import os.path as path
+    import shutil
+
+    RAMA_TRABAJO = "main"
+
     def __init__(self, project):
         self.project = project
 
     def read_version_web(self):
         url_version = "https://raw.githubusercontent.com/" + self.project + "/main/version.txt"
         r = self.requests.get(url = url_version, params = {})
-        data = r.content.decode("utf-8")
-        data = data.split(".")
+        data = r.content.decode("utf-8").replace("\n", "")
+        data = [int(d) for d in data.split(".") ]
         self.web_version = Version()
         self.web_version.unidad = data[2]
         self.web_version.decena = data[1]
         self.web_version.centena = data[0]
+        print("Nueva version: ", data)
 
     def read_version_local(self):
         with open('version.txt', 'r') as reader:
-            data = reader.read()
-            data = data.split(".")
+            data = reader.read().replace("\n", "")
+            data = [int(d) for d in data.split(".") ]
             self.local_version = Version()
             self.local_version.unidad = data[2]
             self.local_version.decena = data[1]
             self.local_version.centena = data[0]
+            print("Version actual: ", data)
 
     def check_new_version(self):
         self.read_version_local()
@@ -39,52 +49,69 @@ class AutoUpdate:
             there_is_new_version = True
         elif self.web_version.unidad > self.local_version.unidad:
             there_is_new_version = True
+
+        if there_is_new_version:
+            print("Hay una nueva versión para descargar...")
+            self.get_data_last_update()
+            self.download_update()
         return there_is_new_version
 
+    def get_data_last_update(self):
+        url_folder = "https://github.com/" + self.project
+        repo_path = self.os.getenv(url_folder)
+        repo = self.Repo(repo_path)
+        if not repo.bare:
+            commit = list(repo.iter_commits(self.RAMA_TRABAJO))[0]
+
+            data_repo = dict()
+            data_repo['project'] = self.project
+            data_repo['desc'] = repo.description
+
+            data_repo['date'] = commit.authored_datetime.strftime("%m/%d/%Y, %H:%M:%S")
+            data_repo['person'] = commit.author.name
+            data_repo['email'] = commit.author.email
+            data_repo['count'] = commit.count()
+            data_repo['size'] = commit.size
+
+            with open('info_version.txt', 'w') as outfile:
+                self.json.dump(data_repo, outfile)
+        else:
+            print('Could not load repository at {} :('.format(self.project))
+
+    def download_update(self):
+        BASE_DIR = self.path.dirname(self.path.realpath(__file__))
+        url_folder = "https://github.com/" + self.project + ".git"
+
+        Folder = "temp"
+        if not self.os.path.isdir(Folder):
+            self.os.mkdir(Folder)
+            self.Repo.clone_from(url_folder, BASE_DIR + "/" + Folder)
+
+        contenidos = self.os.listdir(BASE_DIR)
+        for elemento in contenidos:
+            if self.os.path.isfile(elemento):
+                if not elemento.__eq__("update.py"):
+                    if not elemento.find(".git")>=0:
+                        if not elemento.__eq__("version.txt"):
+                            self.os.remove(elemento)
+
+        contenidos = self.os.listdir(Folder)
+        for elemento in contenidos:
+            if not elemento.find(".git")>=0:
+                self.shutil.copy(elemento, BASE_DIR)
+
+        self.shutil.rmtree(Folder)
+        print("update completed!")
 
 
-auto_update = AutoUpdate(PROJECT)
-print(auto_update.check_new_version())
+if __name__=="__main__":
+    AutoUpdate(PROJECT).check_new_version()
+    print("queso")
 
-url_folder = "https://github.com/" + PROJECT
 
-COMMITS_TO_PRINT = 5
 
-def print_commit(commit):
-    print('----')
-    print(str(commit.hexsha))
-    print("\"{}\" by {} ({})".format(commit.summary,
-                                     commit.author.name,
-                                     commit.author.email))
-    print(str(commit.authored_datetime))
-    print(str("count: {} and size: {}".format(commit.count(),
-                                              commit.size)))
 
-def print_repository(repo):
-    print('Repo description: {}'.format(repo.description))
-    print('Repo active branch is {}'.format(repo.active_branch))
 
-    rama = None
-    for remote in repo.remotes:
-        print('Remote named "{}" with URL "{}"'.format(remote, remote.url))
-        rama = remote
-    print('Last commit for repo is {}.'.format(str(repo.head.commit.hexsha)))
 
-    return rama
-    
 
-import os
-from git import Repo
-repo_path = os.getenv(url_folder)
-repo = Repo(repo_path)
-if not repo.bare:
-    rama = print_repository(repo)
-
-    # create list of commits then print some of them to stdout
-    commits = list(repo.iter_commits(rama))[:COMMITS_TO_PRINT]
-    for commit in commits:
-        print_commit(commit)
-        pass
-else:
-    print('Could not load repository at {} :('.format(repo_path))
 
