@@ -1,4 +1,4 @@
-from library.update import Autoupdate
+from library.autoupdate import Autoupdate
 
 
 @Autoupdate("Update MANITOR")

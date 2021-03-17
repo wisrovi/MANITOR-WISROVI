@@ -1,10 +1,8 @@
 import time
 
 import cv2
-import os.path as path
 
 from Config.beacon import TIME_SCAN_BEACON, MINIMA_DISTANCIA_RSSI
-from Config.github import PROJECT
 from Config.movimiento_frente_camara import TIEMPO_VOLVER_LAVAR_MANOS
 from Config.videos_manitor import PATH_VIDEOS, INSTRUCCIONES
 from Util.beacon import Process_Scan, start_scan_beacon, stop_scan_beacon
@@ -15,7 +13,6 @@ from Util.util_manitor import EnviarNotificacionLavadoManosCompleto, MatricularF
     IniciarEscuchaMQTT
 from Util.util_show_videos import Avatar_video
 from Util.util_sound import iniciar_sounds, reproducir
-from library.autoupdate import Autoupdate
 
 chrono_beacon_scan = currentTime()
 PRIMER_CARDHOLDER = False
@@ -26,16 +23,20 @@ actual_cardholder = str()
 
 
 class Orden_mqtt_recibida:
-    def public_ota(self):
+    @staticmethod
+    def public_ota():
         print("Orden publica: OTA")
 
-    def public_restart(self):
+    @staticmethod
+    def public_restart():
         print("Orden publica: restart")
 
-    def private_ota(self):
+    @staticmethod
+    def private_ota():
         print("Orden privada: OTA")
 
-    def private_restart(self):
+    @staticmethod
+    def private_restart():
         print("Orden privada: restart")
 
 
@@ -43,26 +44,31 @@ class Proceso_deteccion_movimiento:
     import time
     tiempo_transcurrido_por_instruccion = time.time()
 
-    def iniciar_proceso(self):
+    @staticmethod
+    def iniciar_proceso():
         print("Proceso iniciado")
 
     def primer_movimiento_detectado(self):
         print("Primer movimiento")
         self.tiempo_transcurrido_por_instruccion = time.time()
 
-    def terminar_proceso(self):
+    @staticmethod
+    def terminar_proceso():
         global PRIMER_CARDHOLDER
         print("Proceso terminado")
         PRIMER_CARDHOLDER = False
         dm.terminar_proceso_deteccion_movimiento()
 
-    def primer_preaviso_no_movimiento(self):
+    @staticmethod
+    def primer_preaviso_no_movimiento():
         print("Primer preaviso")
 
-    def segundo_preaviso_no_movimiento(self):
+    @staticmethod
+    def segundo_preaviso_no_movimiento():
         print("Segundo preaviso")
 
-    def tercer_preaviso_no_movimiento(self):
+    @staticmethod
+    def tercer_preaviso_no_movimiento():
         print("Tercer preaviso, por favor repita la instruccion")
 
     def mostrar_siguiente_video(self):

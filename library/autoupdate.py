@@ -13,9 +13,12 @@ class AutoUpdate_project:
     import shutil
 
     RAMA_TRABAJO = "main"
-    NOT_ERASE_FILES = ['.git', '.gitattributes', '.gitignore', '.idea', 'info_version.txt', 'autoupdate.py', 'env', '__init__.py']
+    NOT_ERASE_FILES = ['.git', '.gitattributes', '.gitignore', '.idea', 'info_version.txt', 'autoupdate.py', 'env',
+                       '__init__.py']
 
     def __init__(self, project, root_path=None):
+        self.local_version = Version()
+        self.web_version = Version()
         self.project = project
         if root_path is not None:
             self.root_path = root_path
@@ -27,14 +30,12 @@ class AutoUpdate_project:
         r = self.requests.get(url=url_version, params={})
         data = r.content.decode("utf-8").replace("\n", "")
         data = [int(d) for d in data.split(".")]
-        self.web_version = Version()
         self.web_version.unidad = data[2]
         self.web_version.decena = data[1]
         self.web_version.centena = data[0]
         # print("Nueva version: ", data)
 
     def read_version_local(self):
-        exist_file = False
         try:
             with open('version.txt', 'r') as reader:
                 data = reader.read().replace("\n", "")
@@ -44,11 +45,8 @@ class AutoUpdate_project:
                 self.local_version.decena = data[1]
                 self.local_version.centena = data[0]
                 # print("Version actual: ", data)
-                exist_file = True
         except:
             pass
-        if not exist_file:
-            self.local_version = Version()
 
     def check_new_version(self):
         self.read_version_local()
@@ -164,12 +162,11 @@ class Autoupdate(object):
 
 PROJECT = "wisrovi/MANITOR-WISROVI"
 
-
 # @Autoupdate(name="Autoupdate WISROVI", project=PROJECT)
 # def main_demo_autoupdate():
 #     print("update library")
 
 
 if __name__ == "__main__":
-    #main_demo_autoupdate()
+    # main_demo_autoupdate()
     pass

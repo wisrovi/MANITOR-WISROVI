@@ -1,1 +1,1 @@
-{"project": "wisrovi/MANITOR-WISROVI", "desc": "Segunda Version del MANITOR", "date": "03/17/2021, 11:56:04", "person": "William Rodriguez", "email": "wisrovi.rodriguez@gmail.com", "count": 15, "size": 254}
+{"project": "wisrovi/MANITOR-WISROVI", "desc": "Segunda Version del MANITOR", "date": "03/17/2021, 17:09:18", "person": "William Rodriguez", "email": "wisrovi.rodriguez@gmail.com", "count": 23, "size": 249}

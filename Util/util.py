@@ -15,21 +15,26 @@ def FrameSinRuido(self, cap):
     new_img = QuitarPartesNoMarcadasEnMascara(frame, masking)
     return new_img, punto_elegido, frame, masking
 
-def currentTime(): # Obtain current time in seconds
-    now=strftime("%H,%M,%S")
-    (h,m,s) = now.split(',')
-    currentTime = int(h)*3600+int(m)*60+int(s)
+
+def currentTime():  # Obtain current time in seconds
+    now = strftime("%H,%M,%S")
+    (h, m, s) = now.split(',')
+    currentTime = int(h) * 3600 + int(m) * 60 + int(s)
     return currentTime
 
 
-
 import getmac
+
 mac = getmac.get_mac_address()
+
+
 def Get_MAC():
     return mac
 
 
 import datetime
+
+
 def Leer_HoraActual():
     x = datetime.datetime.now()
     return "{}/{}/{}".format(x.day, x.month, x.year) + "-" + "{}:{}:{}".format(x.hour, x.minute, x.second)
@@ -42,16 +47,17 @@ def diff(list1, list2):
 
 
 import numpy as np
+
+
 def vector_vacio(size_vector):
     return [int(i) for i in list(np.zeros(size_vector))]
-
 
 
 if __name__ == "__main__":
     chrono_siguiente_instruccion = currentTime()
     chrono_aux = currentTime()
-    while(abs(chrono_siguiente_instruccion - chrono_aux) < TIEMPO_POR_INSTRUCCION):
+    while (abs(chrono_siguiente_instruccion - chrono_aux) < TIEMPO_POR_INSTRUCCION):
         time.sleep(0.5)
         chrono_aux = currentTime()
 
-    print( "Tiempo terminado" )
+    print("Tiempo terminado")

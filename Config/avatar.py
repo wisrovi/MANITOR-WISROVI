@@ -1,4 +1,3 @@
-
 AVATAR = dict()
 
 AVATAR['START'] = "avatar_saludo.mp4"

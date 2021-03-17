@@ -6,26 +6,34 @@ from Util.util_deteccion_movimiento import Deteccion_movimiento
 
 
 class Proceso_deteccion_movimiento:
-    def iniciar_proceso(self):
+    @staticmethod
+    def iniciar_proceso():
         print("Proceso iniciado")
 
-    def primer_movimiento_detectado(self):
+    @staticmethod
+    def primer_movimiento_detectado():
         print("Primer movimiento")
 
-    def terminar_proceso(self):
+    @staticmethod
+    def terminar_proceso():
         print("Proceso terminado")
 
+    @staticmethod
     def primer_preaviso_no_movimiento(self):
         print("Primer preaviso")
 
+    @staticmethod
     def segundo_preaviso_no_movimiento(self):
         print("Segundo preaviso")
 
+    @staticmethod
     def tercer_preaviso_no_movimiento(self):
         print("Tercer preaviso, por favor repita la instruccion")
 
+    @staticmethod
     def mostrar_siguiente_video(self):
         print("Siguiente instruccion")
+
 
 dm = Deteccion_movimiento(0, Proceso_deteccion_movimiento)
 

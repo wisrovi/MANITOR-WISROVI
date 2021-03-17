@@ -4,11 +4,12 @@ from Util.util_sound import iniciar_sounds, reproducir
 
 iniciar_sounds("../resources/")
 
-
 indicador = -1
+
+
 def Contar(*args):
     global indicador
-    indicador = 0 if indicador>len(GUIONES) else indicador + 1
+    indicador = 0 if indicador > len(GUIONES) else indicador + 1
 
     reproducir(indicador)
     print("Boton oprimido")
