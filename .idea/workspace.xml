@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5fb61a1b-195c-46eb-8557-c52d9295e431" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/broker_mqtt.py" beforeDir="false" afterPath="$PROJECT_DIR$/Config/broker_mqtt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/manitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info_version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/info_version.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/version.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +142,7 @@
       <workItem from="1615946783466" duration="881000" />
       <workItem from="1615993007421" duration="8435000" />
       <workItem from="1616086096610" duration="118000" />
-      <workItem from="1616683710113" duration="10489000" />
+      <workItem from="1616683710113" duration="10660000" />
     </task>
     <servers />
   </component>
