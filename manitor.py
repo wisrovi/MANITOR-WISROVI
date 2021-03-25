@@ -223,7 +223,8 @@ def main():
         cv2.imshow("Frame", black_screen)
         if avatar_class.get_primer_inicio_avatar():
             if PRIMER_CARDHOLDER:
-                cv2.imshow("frame_camara", frame)
+                # cv2.imshow("frame_camara", frame)
+                pass
         # time.sleep(0.025)
         k = cv2.waitKey(30) & 0xff
         if k == 27:
