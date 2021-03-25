@@ -84,7 +84,10 @@ class Proceso_deteccion_movimiento:
         else:
             reproducir(avatar_class.instruccion_actual)
             avatar_class.continuar_siguiente_paso_instruccion()
-            dm.set_time(INSTRUCCIONES[avatar_class.instruccion_actual]['time'])
+            if avatar_class.instruccion_actual <= len(INSTRUCCIONES):
+                dm.set_time(INSTRUCCIONES[avatar_class.instruccion_actual]['time'])
+            else:
+                dm.set_time(INSTRUCCIONES[0]['time'])
 
         self.tiempo_transcurrido_por_instruccion = time.time()
 

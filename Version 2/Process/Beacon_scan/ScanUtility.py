@@ -1,8 +1,3 @@
-import time
-
-TIME_SCAN_BEACON = 5
-
-################## Util.beacon #################################################
 # https://github.com/bowdentheo/BLE-Beacon-Scanner
 
 class Beacon_Obj(object):
@@ -256,7 +251,6 @@ class Beacon_FCV:
                         historico[i] = historico[i - 1]
                     historico[0] = beacon_class.rssi
                     self.HISTORY_BEACON_SCAN[uuid]['history'] = historico
-                # print(beacon_class.getJson())
 
             for i in range(self.size_vector - 1, 0, -1):
                 self.HISTORY_MORE_NEAR_BEACON[i] = self.HISTORY_MORE_NEAR_BEACON[i - 1]
@@ -291,19 +285,3 @@ class Beacon_FCV:
 
     def get_scan_actual(self):
         return self.queue.get()
-
-################################################################################
-
-TIME_SCAN = 5
-scan_beacon = Beacon_FCV(0, TIME_SCAN)
-while True:
-    time.sleep(TIME_SCAN_BEACON)
-    LAST_BEACON = scan_beacon.get_scan_actual()
-    if LAST_BEACON[0]:
-        print("Repetido cardholder:", LAST_BEACON[1])
-    elif len(LAST_BEACON[1]):
-        print("Nuevo cardholder:", LAST_BEACON[1])
-
-    print("Escaneando...")
-    time.sleep(TIME_SCAN)
-
