@@ -1,4 +1,4 @@
-from library.autoupdate import Autoupdate
+from Version1.library.autoupdate import Autoupdate
 import os.path as path
 
 
