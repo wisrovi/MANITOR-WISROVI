@@ -1,8 +1,3 @@
-import time
-
-TIME_SCAN_BEACON = 5
-
-################## Util.beacon #################################################
 # https://github.com/bowdentheo/BLE-Beacon-Scanner
 
 class Beacon_Obj(object):
@@ -291,19 +286,3 @@ class Beacon_FCV:
 
     def get_scan_actual(self):
         return self.queue.get()
-
-################################################################################
-
-TIME_SCAN = 5
-scan_beacon = Beacon_FCV(0, TIME_SCAN)
-while True:
-    time.sleep(TIME_SCAN_BEACON)
-    LAST_BEACON = scan_beacon.get_scan_actual()
-    if LAST_BEACON[0]:
-        print("Repetido cardholder:", LAST_BEACON[1])
-    elif len(LAST_BEACON[1]):
-        print("Nuevo cardholder:", LAST_BEACON[1])
-
-    print("Escaneando...")
-    time.sleep(TIME_SCAN)
-

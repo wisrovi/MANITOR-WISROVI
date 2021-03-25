@@ -5,7 +5,7 @@ import cv2
 from Config.beacon import TIME_SCAN_BEACON, MINIMA_DISTANCIA_RSSI
 from Config.movimiento_frente_camara import TIEMPO_VOLVER_LAVAR_MANOS
 from Config.videos_manitor import PATH_VIDEOS, INSTRUCCIONES
-from Util.beacon import Process_Scan, start_scan_beacon, stop_scan_beacon
+from library.ScanBeaconUtility import Beacon_FCV
 from Util.mqtt import FinalizarEscuchaMQTT
 from Util.util import currentTime
 from Util.util_deteccion_movimiento import Deteccion_movimiento
@@ -21,6 +21,7 @@ avatar_class = Avatar_video(PATH_VIDEOS)
 historial_personas = dict()
 actual_cardholder = str()
 
+scan_beacon = Beacon_FCV(0, TIME_SCAN_BEACON)
 
 class Orden_mqtt_recibida:
     @staticmethod
@@ -101,9 +102,8 @@ class Cardholder(object):
     def __call__(self, f):
         def none(*args, **kw_args):
             print(self.name)
-            start_scan_beacon()
             rta = f(*args, **kw_args)
-            stop_scan_beacon()
+            scan_beacon.terminar_procesos_beacon()
             return rta
 
         return none
@@ -189,7 +189,7 @@ def main():
             if abs(chrono_beacon_scan - currentTime()) >= TIME_SCAN_BEACON:
                 chrono_beacon_scan = currentTime()
 
-                LAST_BEACON = Process_Scan()
+                LAST_BEACON = scan_beacon.get_scan_actual()
                 if not LAST_BEACON[0]:
                     print("No hay cardholder")
                     dm.terminar_proceso_deteccion_movimiento()

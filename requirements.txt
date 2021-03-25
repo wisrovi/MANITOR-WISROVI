@@ -1,0 +1,6 @@
+getmac==0.8.2
+numpy==1.20.1
+opencv-python==4.5.1.48
+paho-mqtt==1.5.1
+playsound==1.2.2
+PyBluez==0.23
