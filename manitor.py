@@ -23,6 +23,7 @@ actual_cardholder = str()
 
 scan_beacon = Beacon_FCV(0, TIME_SCAN_BEACON)
 
+
 class Orden_mqtt_recibida:
     @staticmethod
     def public_ota():
